@@ -147,70 +147,72 @@ export default function Booking() {
             </div>
           </div>
 
-          <div
-            data-map
-            className="absolute -bottom-20 md:-bottom-25 left-1/2 -translate-x-1/2 flex flex-col items-center lg:hidden"
-          >
+          {/* Mobile/tablet: the paper is rotated upright, so everything below the
+              contact details is stacked in one column on its centre line. Animated
+              elements sit inside the positioned wrapper so GSAP never touches the
+              Tailwind translate that does the centring. */}
+          <div className="absolute left-1/2 top-[39%] -translate-x-1/2 flex flex-col items-center lg:hidden">
             <img
-              src={OldMap}
-              alt="Old Map"
+              data-seal
+              src={Seal}
+              alt="sigiliu"
               loading="lazy"
               decoding="async"
-              className="h-55 md:h-70 object-contain"
+              className="relative z-10 h-20 md:h-30 w-auto max-w-none shrink-0 object-contain"
             />
-
-            <button
-              onClick={openDirections}
-              className="absolute bottom-10 border-2 border-black bg-[#C6B79A]/50 cursor-pointer uppercase text-center p-2 text-sm md:text-lg active:bg-black active:text-white transition duration-200"
+            <div
+              data-handwriting
+              className="cursive relative z-10 text-black text-2xl md:text-4xl text-center whitespace-nowrap -mt-1 -rotate-8"
             >
-              Get directions
-            </button>
-            <p className="mt-2 text-black text-xs md:text-base text-center font-semibold leading-tight">
-              {brand.addressLine1}
-              <br />
-              {brand.addressLine2}
-            </p>
-          </div>
-          <div
-            data-handwriting
-            className="cursive text-black absolute text-2xl md:text-4xl w-25 md:w-40 right-28 md:right-40 top-1/2 -translate-y-1/2 -rotate-20 lg:hidden"
-          >
-            See you at the bar!
-          </div>
+              See you at the bar!
+            </div>
 
-          <div
-            data-map
-            className="hidden lg:flex absolute right-20 top-1/2 -translate-y-1/2 flex-col items-center"
-          >
-            <img
-              src={OldMap}
-              alt="Old Map"
-              loading="lazy"
-              decoding="async"
-              className="h-100 object-contain"
-            />
+            <div data-map className="relative -mt-4 md:-mt-6 flex flex-col items-center">
+              <img
+                src={OldMap}
+                alt="Old Map"
+                loading="lazy"
+                decoding="async"
+                className="h-48 md:h-70 object-contain"
+              />
 
-            <button
-              className="border-2 border-black bg-[#C6B79A]/50 cursor-pointer uppercase text-center p-2 text-sm md:text-lg hover:bg-black hover:text-white transition duration-200"
-              onClick={openDirections}
-            >
-              Get directions
-            </button>
-            <p className="mt-2 text-black text-xs md:text-base text-center font-semibold leading-tight">
-              {brand.addressLine1}
-              <br />
-              {brand.addressLine2}
-            </p>
+              <button
+                onClick={openDirections}
+                className="absolute bottom-12 md:bottom-16 border-2 border-black bg-[#C6B79A]/50 cursor-pointer uppercase text-center p-2 text-sm md:text-lg active:bg-black active:text-white transition duration-200"
+              >
+                Get directions
+              </button>
+              <p className="-mt-6 text-black text-xs md:text-base text-center font-semibold leading-tight">
+                {brand.addressLine1}
+                <br />
+                {brand.addressLine2}
+              </p>
+            </div>
           </div>
 
-          <img
-            data-seal
-            src={Seal}
-            alt="sigiliu"
-            loading="lazy"
-            decoding="async"
-            className="absolute h-20 md:h-30 w-auto max-w-none shrink-0 object-contain lg:hidden left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
+          <div className="hidden lg:flex absolute right-20 top-1/2 -translate-y-1/2">
+            <div data-map className="flex flex-col items-center">
+              <img
+                src={OldMap}
+                alt="Old Map"
+                loading="lazy"
+                decoding="async"
+                className="h-100 object-contain"
+              />
+
+              <button
+                className="border-2 border-black bg-[#C6B79A]/50 cursor-pointer uppercase text-center p-2 text-sm md:text-lg hover:bg-black hover:text-white transition duration-200"
+                onClick={openDirections}
+              >
+                Get directions
+              </button>
+              <p className="mt-2 text-black text-xs md:text-base text-center font-semibold leading-tight">
+                {brand.addressLine1}
+                <br />
+                {brand.addressLine2}
+              </p>
+            </div>
+          </div>
 
           <div className="hidden lg:flex flex-col items-center absolute left-1/2 top-4/7 -translate-x-1/2 -translate-y-1/2">
             <img
