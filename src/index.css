@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@font-face {
+  font-family: "LibreBodoni";
+  src: url("./assets/fonts/LibreBodoni-VariableFont_wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Allura";
+  src: url("./assets/fonts/Allura-Regular.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  background: #000;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #c49a53;
+  color: #000;
+}
+
+.hero-title {
+  font-family: "LibreBodoni", serif;
+}
+
+.cursive {
+  font-family: "Allura", serif;
+}
+
+@layer components {
+  .shadow {
+    @apply filter-[drop-shadow(0_0_8px_rgba(0,0,0,1))_drop-shadow(0_0_20px_rgba(0,0,0,1))_drop-shadow(0_0_60px_rgba(0,0,0,1))];
+  }
+}
+
+.instagram-swiper {
+  padding-bottom: 50px !important;
+}
+
+.instagram-swiper .swiper-pagination {
+  position: absolute !important;
+  bottom: 0 !important;
+}
+
+.instagram-swiper .swiper-pagination-bullet {
+  background: #c49a53;
+  opacity: 0.4;
+  transition:
+    opacity 0.3s ease,
+    width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.instagram-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 22px;
+  border-radius: 4px;
+}
+
+.paper-ink {
+  color: #24160d;
+  opacity: 0.86;
+  mix-blend-mode: multiply;
+  text-shadow: 0.3px 0.3px 0 rgba(80, 45, 20, 0.25);
+  filter: contrast(0.9);
+}
+
+/* Gold drop that runs down the hero's scroll cue */
+@keyframes cue-drip {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(300%);
+    opacity: 0;
+  }
+}
+
+.cue-drip {
+  animation: cue-drip 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes copied-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+
+.copied-in {
+  animation: copied-in 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
